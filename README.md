@@ -1,6 +1,6 @@
 # Google Keep Desktop App
 
-[Unoffical] Google Keep as a desktop app using Tauri
+\[Unaffiliated] Google Keep as a desktop app using Tauri
 
 ## How to run
 
@@ -8,6 +8,12 @@
 yarn        # install package.json deps
 yarn dev    # run debug mode
 yarn rls    # build for release
+```
+
+## How to Create Tauri Icons
+
+```sh
+yarn tauri icon PATH_TO_SOURCE_ICON.png
 ```
 
 ## Environment
