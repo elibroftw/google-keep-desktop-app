@@ -10,6 +10,12 @@ yarn dev    # run debug mode
 yarn rls    # build for release
 ```
 
+## How to Create Tauri Icons
+
+```sh
+yarn tauri icon PATH_TO_SOURCE_ICON.png
+```
+
 ## Environment
 
 - [Tauri Prerequisites](https://tauri.studio/docs/getting-started/prerequisites),
