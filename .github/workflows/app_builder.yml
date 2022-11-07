@@ -16,9 +16,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # for projects that use labels and PRs,
+      # try https://github.com/mikepenz/release-changelog-builder-action instead
       - name: Build Changelog
         id: build_changelog
-        run: echo "changelog=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s")" >> $GITHUB_OUTPUT
+        run: >-
+          prevTag=$(git ls-remote --tags --refs --sort='-v:refname' | sed -n 2p | cut -d "/" -f 3)
+          echo "changelog=$(git log $(git describe --tags --exclude $(git describe --tags) --abbrev=0)..HEAD --pretty=format:"- %s")" >> $GITHUB_OUTPUT
 
       - name: "TEST"
         run: echo "${{ steps.build_changelog.outputs.changelog }}"
@@ -31,9 +35,12 @@ jobs:
           # node-version-file: '.nvmrc'
 
       - name: Rust setup
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
+        # not using this since it hasn't been updated in 3 years
+        # uses: actions-rs/toolchain@v1
+        # with:
+        #   toolchain: stable
+        run:
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
 
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
