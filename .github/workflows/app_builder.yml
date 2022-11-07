@@ -18,11 +18,10 @@ jobs:
 
       # for projects that use labels and PRs,
       # try https://github.com/mikepenz/release-changelog-builder-action instead
+      # TODO: use API to collect commit messages
       - name: Build Changelog
         id: build_changelog
-        run: >-
-          prevTag=$(git ls-remote --tags --refs --sort='-v:refname' | sed -n 2p | cut -d "/" -f 3)
-          echo "changelog=$(git log $(git describe --tags --exclude $(git describe --tags) --abbrev=0)..HEAD --pretty=format:"- %s")" >> $GITHUB_OUTPUT
+        run: echo "changelog="- ADD CHANGELOG" >> $GITHUB_OUTPUT
 
       - name: "TEST"
         run: echo "${{ steps.build_changelog.outputs.changelog }}"
