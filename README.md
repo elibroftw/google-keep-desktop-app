@@ -39,6 +39,7 @@ yarn tauri icon PATH_TO_SOURCE_ICON.png
 - [Mantine Docs](https://mantine.dev/pages/basics/)
 - [Mantine Default Theme](https://github.com/mantinedev/mantine/blob/master/src/mantine-styles/src/theme/default-theme.ts)
 - [react-18next Trans Component](https://react.i18next.com/latest/trans-component)
+- [Tauri Config](https://tauri.app/v1/api/config)
 
 ### Calling Rust from the Frontend
 
