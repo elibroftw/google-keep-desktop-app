@@ -16,6 +16,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Build Changelog
+        id: steps.build_changelog.outputs.changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          # NOTE: remove if using PRs instead of commits
+          commitMode: true
+          # NOTE: edit if you want more control over changelog
+          # see https://github.com/mikepenz/release-changelog-builder-action#readme
+          # configurationJson: |
+          #   {
+          #     "commitMode": true
+          #   }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "TEST"
+        run:
+          echo ${{ steps.build_changelog.outputs.changelog }}
+
       - name: Node.js setup
         uses: actions/setup-node@v3
         # NOTE: enterprise developers may hard code a version
@@ -37,21 +56,6 @@ jobs:
         # NOTE: include if frontend has build script
         run: yarn # && yarn build
 
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v3
-        with:
-          # NOTE: remove if using PRs instead of commits
-          commitMode: true
-          # NOTE: edit if you want more control over changelog
-          # see https://github.com/mikepenz/release-changelog-builder-action#readme
-          # configurationJson: |
-          #   {
-          #     "commitMode": true
-          #   }
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
 
@@ -62,7 +66,7 @@ jobs:
           tagName: ${{ github.ref_name }}
           releaseName: "[Unaffiliated] Google Keep v__VERSION__"
           releaseBody: |
-            ${{ steps.github_release.outputs.changelog }}
+            ${{steps.build_changelog.outputs.changelog}}
             See the assets to download this version and install.
           releaseDraft: true
           prerelease: false
