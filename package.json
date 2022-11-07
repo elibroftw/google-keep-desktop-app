@@ -6,6 +6,7 @@
   "scripts": {
     "nvmrc": "node -v > .nvmrc",
     "postinstall": "yarn nvmrc",
+    "predev": "yarn nvmrc",
     "dev": "tauri dev",
     "tauri": "tauri",
     "rls": "tauri build"

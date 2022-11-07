@@ -2,7 +2,7 @@ name: App Builder
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
 
 jobs:
@@ -40,6 +40,13 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          # see https://github.com/mikepenz/release-changelog-builder-action#readme
+          # NOTE: remove/edit if using PRs instead of commits
+          configurationJson: |
+            {
+              "commitMode": true
+            }
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -51,7 +58,8 @@ jobs:
         with:
           # tauri-action replaces \_\_VERSION\_\_ with the app version
           tagName: ${{ github.ref_name }}
-          releaseName: '[Unaffiliated] Google Keep v__VERSION__'
-          releaseBody: '$${{ steps.github_release.outputs.changelog }}\nSee the assets to download this version and install.'
+          releaseName: "[Unaffiliated] Google Keep v__VERSION__"
+          releaseBody: '${{ steps.github_release.outputs.changelog }}
+                        See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
