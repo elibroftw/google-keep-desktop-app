@@ -23,9 +23,6 @@ jobs:
         id: build_changelog
         run: echo "changelog=- ADD CHANGELOG" >> $GITHUB_OUTPUT
 
-      - name: "TEST"
-        run: echo "${{ steps.build_changelog.outputs.changelog }}"
-
       - name: Node.js setup
         uses: actions/setup-node@v3
         # NOTE: enterprise developers may hard code a version
@@ -33,11 +30,7 @@ jobs:
           node-version: latest
           # node-version-file: '.nvmrc'
 
-      - name: Rust setup
-        # not using this since it hasn't been updated in 3 years
-        # uses: actions-rs/toolchain@v1
-        # with:
-        #   toolchain: stable
+      - name: Install Rust (Stable)
         run:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
 
