@@ -41,12 +41,14 @@ jobs:
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
         with:
+          # NOTE: remove if using PRs instead of commits
+          commitMode: true
+          # NOTE: edit if you want more control over changelog
           # see https://github.com/mikepenz/release-changelog-builder-action#readme
-          # NOTE: remove/edit if using PRs instead of commits
-          configurationJson: |
-            {
-              "commitMode": true
-            }
+          # configurationJson: |
+          #   {
+          #     "commitMode": true
+          #   }
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
