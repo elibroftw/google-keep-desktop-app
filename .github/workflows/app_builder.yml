@@ -20,14 +20,24 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          # NOTE: remove if using PRs instead of commits
-          commitMode: true
           # NOTE: edit if you want more control over changelog
           # see https://github.com/mikepenz/release-changelog-builder-action#readme
-          # configurationJson: |
-          #   {
-          #     "commitMode": true
-          #   }
+          # NOTE: remove if using PRs instead of commits
+          commitMode: true      # remove if using PRs instead of PRs
+          configurationJson: |
+            {
+              "categories": [
+                  {
+                      "title": "## 📦 Uncategorized",
+                      "labels": []
+                  }
+              ],
+              "template": "${{CHANGELOG}}\n\nUncategorized:\n${{UNCATEGORIZED}}\n\nIgnored:\n${{IGNORED}}\n\n${{UNCATEGORIZED_COUNT}}\n${{IGNORED_COUNT}}",
+              "pr_template": "- ${{TITLE}}\n",
+              "empty_template": "${{OWNER}}\n${{REPO}}\n${{FROM_TAG}}\n${{TO_TAG}}",
+              "max_pull_requests": 1000,
+              "max_back_track_time_days": 1000
+            }
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
