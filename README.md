@@ -10,6 +10,12 @@ yarn dev    # run debug mode
 yarn rls    # build for release
 ```
 
+### Updating .nvmrc File
+
+```sh
+node -v > .nvmrc
+```
+
 ## How to Create Tauri Icons
 
 ```sh

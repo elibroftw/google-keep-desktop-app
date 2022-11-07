@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "nvmrc": "node -v > .nvmrc",
+    "postinstall": "yarn nvmrc",
     "dev": "tauri dev",
     "tauri": "tauri",
     "rls": "tauri build"
