@@ -33,7 +33,7 @@ jobs:
 
       - name: "TEST"
         run:
-          echo ${{ steps.build_changelog.outputs.changelog }}
+          echo "${{ steps.build_changelog.outputs.changelog }}"
 
       - name: Node.js setup
         uses: actions/setup-node@v3
