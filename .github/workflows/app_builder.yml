@@ -21,7 +21,7 @@ jobs:
       # TODO: use API to collect commit messages
       - name: Build Changelog
         id: build_changelog
-        run: echo "changelog="- ADD CHANGELOG" >> $GITHUB_OUTPUT
+        run: echo "changelog=- ADD CHANGELOG" >> $GITHUB_OUTPUT
 
       - name: "TEST"
         run: echo "${{ steps.build_changelog.outputs.changelog }}"
