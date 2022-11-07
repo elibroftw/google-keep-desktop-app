@@ -20,7 +20,7 @@ jobs:
         id: build_changelog
         run:  >-
           echo "::set-output name=changelog::$(
-            git log $(git describe --tags --abbrev=0)..HEAD --oneline
+            git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 @^)..@
           )"
 
       - name: "TEST"
