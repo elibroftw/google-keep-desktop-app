@@ -18,10 +18,7 @@ jobs:
 
       - name: Build Changelog
         id: build_changelog
-        run:  >-
-          echo "::set-output name=changelog::$(
-            git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 @^)..@
-          )"
+        run: echo "changelog=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s")" >> $GITHUB_OUTPUT
 
       - name: "TEST"
         run: echo "${{ steps.build_changelog.outputs.changelog }}"
