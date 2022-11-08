@@ -9,9 +9,11 @@
     "predev": "yarn nvmrc",
     "dev": "tauri dev",
     "tauri": "tauri",
-    "rls": "tauri build"
+    "rls": "tauri build",
+    "update": "concurrently \"yarn upgrade \" \"cd src-tauri && cargo update\""
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.1.0"
+    "@tauri-apps/cli": "^1.1.0",
+    "concurrently": "^7.0.0"
   }
 }
