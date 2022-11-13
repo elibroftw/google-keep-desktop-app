@@ -1,7 +1,7 @@
 {
   "name": "google-keep",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.11",
   "type": "module",
   "scripts": {
     "nvmrc": "node -v > .nvmrc",

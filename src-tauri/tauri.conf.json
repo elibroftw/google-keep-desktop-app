@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "Google Keep",
-    "version": "1.0.10"
+    "version": "../package.json"
   },
   "tauri": {
     "allowlist": {
@@ -20,8 +20,8 @@
       },
       "dialog": {
         "all": false,
-        "ask": false,
-        "confirm": true,
+        "ask": true,
+        "confirm": false,
         "message": false,
         "open": false,
         "save": false
