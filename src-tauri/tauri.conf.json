@@ -20,8 +20,8 @@
       },
       "dialog": {
         "all": false,
-        "ask": true,
-        "confirm": true,
+        "ask": false,
+        "confirm": false,
         "message": false,
         "open": false,
         "save": false
