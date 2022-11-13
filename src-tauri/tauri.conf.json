@@ -19,9 +19,9 @@
         "writeText": false
       },
       "dialog": {
-        "all": true,
+        "all": false,
         "ask": false,
-        "confirm": false,
+        "confirm": true,
         "message": false,
         "open": false,
         "save": false
