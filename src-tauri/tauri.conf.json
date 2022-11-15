@@ -122,6 +122,7 @@
         "icons/icon.ico"
       ],
       "identifier": "Google.Keep",
+      "publisher": "Elijah Lopez",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
