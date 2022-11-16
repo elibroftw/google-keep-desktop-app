@@ -8,6 +8,7 @@
 yarn        # install package.json deps
 yarn dev    # run debug mode
 yarn rls    # build for release
+yarn clean  # remove unused build files
 ```
 
 ### Updating .nvmrc File

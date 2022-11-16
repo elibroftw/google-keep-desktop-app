@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "nvmrc": "node -v > .nvmrc",
+    "preclean": "cargo install cargo-sweep -q",
+    "clean": "cd src-tauri && cargo sweep -s && cargo build && cargo build --release && cargo sweep -f && cd ..",
     "postinstall": "yarn nvmrc",
     "predev": "yarn nvmrc",
     "dev": "tauri dev",
