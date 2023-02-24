@@ -5,10 +5,16 @@
 )]
 
 use tauri_plugin_window_state;
+use tauri::Manager;
 
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_window_state::Builder::default().build())
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+    .plugin(tauri_plugin_window_state::Builder::default().build())
+    .setup(|app| {
+        let window = app.get_window("main").unwrap();
+        window.eval("window.location.replace('https://keep.google.com/');").unwrap();
+        Ok(())
+    })
+    .run(tauri::generate_context!())
+    .expect("error while running tauri application");
 }
